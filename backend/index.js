@@ -2,7 +2,7 @@ import express from "express";
 import connectDb from "./connectDB.js";
 import dotenv from "dotenv";
 import cors from "cors";
-import health from "./routes/health.js";
+import router from "./routes/routes.js";
 
 // Environmental variables configuration
 dotenv.config();
@@ -18,11 +18,11 @@ connectDb(DB_URL);
 const server = express();
 
 // Enable CORS and parse JSON request bodies
-server.use(cors({ origin: "*" }));
+server.use(cors());
 server.use(express.json());
 
 // Routes Setup
-server.get("/health", health);
+server.use("/", router);
 
 server.listen(PORT, () => {
   console.log("Server Up..");
