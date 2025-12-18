@@ -1,51 +1,17 @@
 import express from "express";
-import signup from "../Controllers/Signup.js";
-import { check } from "express-validator";
-import login from "../Controllers/Login.js";
+import addTask from "../Controllers/AddTask.js";
+import getTasks from "../Controllers/GetTasks.js";
+import updateTasks from "../Controllers/UpdateTasks.js";
+import deleteTask from "../Controllers/DeleteTask.js";
 
 let router = express.Router();
 
-router.post(
-  "/signup",
-  // ==== SIGN UP VALIDATIONS
-  [
-    check("name")
-      .notEmpty()
-      .withMessage("Name is required")
-      .isLength({ min: 3 })
-      .withMessage("Name must be at least 3 characters long"),
+router.post("/addtask", addTask);
 
-    check("email")
-      .notEmpty()
-      .withMessage("Email is required")
-      .isEmail()
-      .withMessage("Enter a valid email"),
+router.get("/gettasks", getTasks);
 
-    check("password")
-      .notEmpty()
-      .withMessage("Password is required")
-      .isLength({ min: 6 })
-      .withMessage("Password must be at least 6 characters long"),
-  ],
-  signup
-);
+router.post("/updatetasks", updateTasks);
 
-router.post(
-  "/login",
-  // ==== LOGIN  VALIDATIONS
-  [
-    check("email")
-      .notEmpty()
-      .withMessage("Email is required")
-      .isEmail()
-      .withMessage("Enter a valid email"),
+router.delete("/deletetask", deleteTask);
 
-    check("password")
-      .notEmpty()
-      .withMessage("Password is required")
-      .isLength({ min: 6 })
-      .withMessage("Password must be at least 6 characters long"),
-  ],
-  login
-);
 export default router;

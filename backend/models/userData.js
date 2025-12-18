@@ -1,13 +1,14 @@
 import mongoose from "mongoose";
 
-const userDataSchema = new mongoose.Schema(
+const userSchema = mongoose.Schema(
   {
-    name: { type: String, required: true },
-    email: { type: String, required: true },
-    password: { type: String, required: true },
+    task: { type: String, required: true },
+    description: { type: String, required: true },
+    date: { type: String, required: true },
+    completed: { type: Boolean, default: false },
   },
-  { timestamps: true }
+  { timestamps: true, runValidators: true }
 );
 
-const userSignModel = mongoose.model("test", userDataSchema);
-export default userSignModel;
+const userData = mongoose.model("userdata", userSchema);
+export default userData;

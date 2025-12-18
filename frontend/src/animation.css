@@ -1,0 +1,36 @@
+@keyframes mover {
+  0% {
+    background-position: 0px 0px;
+  }
+  25% {
+    background-position: 350px 650px;
+  }
+  50% {
+    background-position: 850px 350px;
+  }
+  100% {
+    background-position: -550px -350px;
+  }
+}
+
+@keyframes fadeScaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeScaleOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+}
